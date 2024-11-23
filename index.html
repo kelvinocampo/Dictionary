@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Traductor / Translate</title>
     <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/translate.css">
 </head>
 
 <body>
@@ -18,7 +19,17 @@
     </header>
     <main>
         <section class="translate">
-
+            <form>
+                <select name="mode" id="mode">
+                    <option selected value="toEng">Español - English</option>
+                    <option value="toEsp">English - Español</option>
+                </select>
+                <input required type="text" class="inputWord" name="word" id="word" placeholder="Ingrese la palabra a traducir">
+                <input class="formBtn" type="submit" value="Traducir">
+            </form>
+            <div class="output">
+                <p>Traduccion: <span></span></p>
+            </div>
         </section>
         <section class="list">
 

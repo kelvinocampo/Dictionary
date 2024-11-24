@@ -7,7 +7,10 @@
     <title>Traductor / Translate</title>
     <link rel="stylesheet" href="./styles/main.css">
     <link rel="stylesheet" href="./styles/translate.css">
-    <script type="module" src="./scripts/translate.js"></script>
+    <link rel="stylesheet" href="styles/table.css">
+    <link rel="stylesheet" href="styles/createWord.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.4/dist/sweetalert2.all.min.js"></script>
+    <script type="module" src="./scripts/main.js"></script>
 </head>
 
 <body>
@@ -25,64 +28,56 @@
                     <option selected value="spanish">Español - English</option>
                     <option value="english">English - Español</option>
                 </select>
-                <input required type="text" class="inputWord" name="word" id="word" placeholder="Ingrese la palabra a traducir">
+                <input required type="text" class="inputWord" name="word" id="word"
+                    placeholder="Ingrese la palabra a traducir">
                 <input class="formBtn" type="submit" value="Traducir">
             </form>
             <div class="output">
                 <p>Traduccion: <span>...</span></p>
             </div>
         </section>
-        <section class="list">
+        <section class="addWord">
+            <h3>Agregar Nueva Palabra</h3>
+
+            <div class="word">
+                <label for="categorySelect">Selecciona una categoría:</label>
+                <select id="categorySelect">
+                    <option value="animals">Animales</option>
+                    <option value="fruits">Frutas</option>
+                    <option value="colors">Colores</option>
+                    <option value="physical_descriptions">Descripciones Físicas</option>
+                    <option value="skills">Habilidades</option>
+                    <option value="verbs">Verbos</option>
+                </select>
+                <input type="text" name="wordEnglish" id="wordEnglish" placeholder="Inglés">
+                <input type="text" name="wordSpanish" id="wordSpanish" placeholder="Español">
+                <input type="text" name="example" id="example" placeholder="Ejemplo">
+
+            </div>
+            <button id="addWordButton">Agregar</button>
+        </section>
+        <section class="table">
+            <div class="controls">
+                <button class="categoryButton" data-category="animals">Animales</button>
+                <button class="categoryButton" data-category="fruits">Frutas</button>
+                <button class="categoryButton" data-category="colors">Colores</button>
+                <button class="categoryButton" data-category="physical_descriptions">Descripciones Físicas</button>
+                <button class="categoryButton" data-category="skills">Habilidades</button>
+                <button class="categoryButton" data-category="verbs">Verbos</button>
+            </div>
+
             <table class="tableWord">
                 <colgroup span="3" class="columns"></colgroup>
-                <tr>
-                    <th>Ingles</th>
-                    <th>Español</th>
-                    <th>Ejemplo</th>
-                </tr>
-                <tr>
-                    <th></th>
-                    <th class="category">Animales</th>
-                    <th></th>
-                </tr>
-                <tr>
-                    <td>Perro</td>
-                    <td>Dogfffffffffffffffffffffffffffffffffffffffffffffffffffffffff</td>
-                    <td class="filaFinal">309
-                        milliodsfffffffffffffffffffffffffffffffffffffffffffffffnmilliodsfffffffffffffffffffffffffffffffffffffffffffffffnmilliodsfffffffffffffffffffffffffffffffffffffffffffffffnmilliodsfffffffffffffffffffffffffffffffffffffffffffffffnmilliodsfffffffffffffffffffffffffffffffffffffffffffffffnmilliodsfffffffffffffffffffffffffffffffffffffffffffffffnmilliodsfffffffffffffffffffffffffffffffffffffffffffffffnmilliodsfffffffffffffffffffffffffffffffffffffffffffffffn
-                    </td>
-                </tr>
-                <tr>
-                    <td>Sweden</td>
-                    <td></td>
-                    <td>9 million</td>
-                </tr>
-                <tr>
-                    <td>Sweden</td>
-                    <td></td>
-                    <td>9 million</td>
-                </tr>
-                <tr>
-                    <td>Sweden</td>
-                    <td></td>
-                    <td>9 million</td>
-                </tr>
-                <tr>
-                    <td>Sweden</td>
-                    <td></td>
-                    <td>9 million</td>
-                </tr>
-                <tr>
-                    <td>Sweden</td>
-                    <td></td>
-                    <td>9 million</td>
-                </tr>
-                <tr>
-                    <td>Sweden</td>
-                    <td></td>
-                    <td>9 million</td>
-                </tr>
-
+                <thead>
+                    <tr>
+                        <th>Inglés</th>
+                        <th>Español</th>
+                        <th>Ejemplo</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Las palabras se insertarán aquí -->
+                </tbody>
             </table>
         </section>
     </main>
@@ -90,8 +85,6 @@
         <p>Kevin Ocampo - Jhonatan Arcos</p>
         <p>2024</p>
     </footer>
-
-    <script type="module" src="scripts/main.js"></script>
 </body>
 
 </html>

@@ -1,5 +1,8 @@
 import dictionary from "./dictionary.js";
 
+export const translate = () =>{
+
+
 const $form = document.getElementById('translateForm');
 const $output = document.querySelector('.output p span');
 
@@ -34,3 +37,4 @@ function translate(e) {
 }
 
 $form.onsubmit = translate;
+}

@@ -1,0 +1,62 @@
+.table {
+    display: none;
+
+    .tableWord {
+        width: 80vw;
+        max-width: 800px;
+        height: auto;
+        border: 1px solid #fff;
+        background-color: var(--main-color);
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        border-collapse: collapse;
+        overflow: hidden;
+
+        th,
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+            word-break: break-word;
+        }
+
+        th {
+            font-size: 1.5rem;
+            background-color: var(--dark-color);
+            color: white;
+            height: 60px;
+        }
+    }
+
+
+}
+
+.controls {
+    margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+button {
+    font-size: 16px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    background: var(--main-color);
+    border: none;
+    box-shadow: 1px 1px 5px #0000007c;
+    cursor: pointer;
+    cursor: pointer;
+    transition: ease-out 0.5s;
+
+}
+
+button:hover {
+    color: white;
+    box-shadow: inset 0 -100px 0 0 var(--dark-color);
+}
+
+button:active {
+    transform: scale(0.9);
+}

@@ -69,6 +69,8 @@ main {
     justify-content: center;
     align-items: center;
     padding: 124px;
+    flex-direction: column;
+    gap: 50px;
 }
 
 footer {

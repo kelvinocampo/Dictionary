@@ -4,21 +4,14 @@ export const maketable = () => {
     const btnShow = document.getElementById('showWords');
     const table = document.querySelector('.table');
 
-    const showtable = () => {
-        table.style.display = "block";
-        btnShow.textContent = "Ocultar tabla";
-        btnShow.removeEventListener('click', showtable);
-        btnShow.addEventListener('click', hidetable);
+    const showHideTable = () => {
+        const display = table.style.display;
+        const textContent = btnShow.textContent;
+        table.style.display = (display === "block") ? "none" : "block";
+        btnShow.textContent = (textContent === "Ocultar tabla") ? "Mostrar tabla" : "Ocultar tabla";
     }
 
-    const hidetable = () => {
-        table.style.display = "none";
-        btnShow.textContent = "Mostrar tabla";
-        btnShow.removeEventListener('click', hidetable);
-        btnShow.addEventListener('click', showtable);
-    }
-
-    btnShow.addEventListener('click', showtable);
+    btnShow.onclick = showHideTable;
 
     const populateTable = (category, cleanTable = true) => {
         const table = document.querySelector('.tableWord');
@@ -42,10 +35,10 @@ export const maketable = () => {
     const categoryButtons = document.querySelectorAll('.categoryButton');
 
     categoryButtons.forEach(button => {
-        button.addEventListener('click', () => {
+        button.onclick = () => {
             const category = button.getAttribute('data-category');
             populateTable(category);
-        });
+        };
     });
 
     const defaultTable = () => {

@@ -5,19 +5,12 @@ export const createWord = () => {
     const createWordSection = document.querySelector('.addWord');
     const tableBody = document.getElementById('tableBody');
 
-    const showCreateWord = () => {
-        createWordSection.style.display = 'flex';
-        btnShowCreateWord.textContent = 'Cancelar';
-        btnShowCreateWord.removeEventListener('click', showCreateWord);
-        btnShowCreateWord.addEventListener('click', hideCreateWord);
-    };
-
-    const hideCreateWord = () => {
-        createWordSection.style.display = 'none';
-        btnShowCreateWord.textContent = 'Crear palabra';
-        btnShowCreateWord.removeEventListener('click', hideCreateWord);
-        btnShowCreateWord.addEventListener('click', showCreateWord);
-    };
+    const showHideCreateWord = () => {
+        const display = createWordSection.style.display
+        const textContent = btnShowCreateWord.textContent
+        createWordSection.style.display = (display === "flex") ? "none" : "flex";
+        btnShowCreateWord.textContent = (textContent === "Cancelar") ? "Crear palabra" : "Cancelar";
+    }
 
     const clearInputs = () => {
         document.getElementById('wordEnglish').value = '';
@@ -25,9 +18,9 @@ export const createWord = () => {
         document.getElementById('example').value = '';
     };
 
-    btnShowCreateWord.addEventListener('click', showCreateWord);
+    btnShowCreateWord.onclick = showHideCreateWord;
 
-    addWordButton.addEventListener('click', () => {
+    addWordButton.onclick = () => {
         const wordEnglish = document.getElementById('wordEnglish').value.trim();
         const wordSpanish = document.getElementById('wordSpanish').value.trim();
         const example = document.getElementById('example').value.trim();
@@ -60,5 +53,5 @@ export const createWord = () => {
             })
             return;
         }
-    });
+    }
 };

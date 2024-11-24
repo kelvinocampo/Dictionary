@@ -46,9 +46,7 @@ header {
             border: none;
             box-shadow: 2px 2px 10px #0000007c;
             cursor: pointer;
-            cursor: pointer;
-            transition: ease-out 0.5s;
-            
+            transition: all ease-out 0.5s;
         }
 
         button:hover {

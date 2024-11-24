@@ -33,12 +33,12 @@
                 <input class="formBtn" type="submit" value="Traducir">
             </form>
             <div class="output">
-                <p>Traduccion: <span>...</span></p>
+                <p>Traduccion: <span id="wordTranslate">...</span></p>
+                <p>Ejemplo: <span id="exampleTranslate">...</span></p>
             </div>
         </section>
         <section class="addWord">
             <h3>Agregar Nueva Palabra</h3>
-
             <div class="word">
                 <label for="categorySelect">Selecciona una categoría:</label>
                 <select id="categorySelect">
@@ -52,7 +52,6 @@
                 <input type="text" name="wordEnglish" id="wordEnglish" placeholder="Inglés">
                 <input type="text" name="wordSpanish" id="wordSpanish" placeholder="Español">
                 <input type="text" name="example" id="example" placeholder="Ejemplo">
-
             </div>
             <button id="addWordButton">Agregar</button>
         </section>

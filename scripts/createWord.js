@@ -36,10 +36,10 @@ export const createWord = () => {
         if (wordEnglish && wordSpanish && example) {
             const row = document.createElement('tr');
             row.innerHTML = `
-          <td>${wordEnglish}</td>
-          <td>${wordSpanish}</td>
-          <td>${example}</td>
-        `;
+                <td>${wordEnglish}</td>
+                <td>${wordSpanish}</td>
+                <td>${example}</td>
+            `;
             tableBody.appendChild(row);
 
             clearInputs();

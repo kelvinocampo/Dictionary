@@ -1,40 +1,42 @@
 import dictionary from "./dictionary.js";
 
-export const translate = () =>{
+export const translate = () => {
+    const $form = document.getElementById('translateForm');
+    const $outputWord = document.getElementById('wordTranslate');
+    const $outputExample = document.getElementById('exampleTranslate');
 
+    function showOutput(output, example) {
+        $outputWord.textContent = output || 'Traduccion no encontrada';
+        $outputExample.textContent = example || 'Traduccion no encontrada';
+    }
 
-const $form = document.getElementById('translateForm');
-const $output = document.querySelector('.output p span');
-
-function showOutput(output) {
-    $output.textContent = output || 'Traduccion no encontrada';
-}
-
-function searchWord(word, mode) {
-    const categories = Object.keys(dictionary.categories);
-    let wordTranslate = 'Traduccion no encontrada';
-    categories.forEach(category => {
-        dictionary.categories[category].forEach(item => {
-            if (item[mode].toLowerCase() === word) {
-                let resultMode = (mode === "english") ? "spanish" : "english";
-                wordTranslate = item[resultMode];
-            }
-            console.log(item[mode], word);
+    function searchWord(word, mode) {
+        const categories = Object.keys(dictionary.categories);
+        let wordTranslate = 'Traduccion no encontrada';
+        let example = 'Traduccion no encontrada';
+        categories.forEach(category => {
+            dictionary.categories[category].forEach(item => {
+                if (item[mode].toLowerCase() === word) {
+                    let resultMode = (mode === "english") ? "spanish" : "english";
+                    example = item["example"];
+                    wordTranslate = item[resultMode];
+                }
+            });
         });
-    });
-    return wordTranslate;
-}
+        return [wordTranslate, example];
+    }
 
-function translate(e) {
-    e.preventDefault();
+    function translate(e) {
+        e.preventDefault();
 
-    const $word = document.getElementById('word');
-    const $mode = document.getElementById('mode');
+        const $word = document.getElementById('word');
+        const $mode = document.getElementById('mode');
 
-    const output = searchWord(($word.value).toLowerCase(), $mode.value);
+        const [output, example] = searchWord(($word.value).toLowerCase(), $mode.value);
+        console.log(example);
+        
+        showOutput(output, example);
+    }
 
-    showOutput(output);
-}
-
-$form.onsubmit = translate;
+    $form.onsubmit = translate;
 }

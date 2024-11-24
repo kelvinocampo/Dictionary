@@ -1,7 +1,5 @@
 import dictionary from "./dictionary.js";
 
-
-
 export const maketable = () => {
     const btnShow = document.getElementById('showWords');
     const table = document.querySelector('.table');
@@ -22,12 +20,14 @@ export const maketable = () => {
 
     btnShow.addEventListener('click', showtable);
 
-    const populateTable = (category) => {
+    const populateTable = (category, cleanTable = true) => {
         const table = document.querySelector('.tableWord');
         const tbody = table.querySelector('tbody');
-        tbody.innerHTML = ''; 
+
+        if (cleanTable) tbody.innerHTML = '';
+
         const items = dictionary.categories[category];
-        
+
         items.forEach(item => {
             const row = document.createElement('tr');
             row.innerHTML = `
@@ -43,8 +43,16 @@ export const maketable = () => {
 
     categoryButtons.forEach(button => {
         button.addEventListener('click', () => {
-            const category = button.getAttribute('data-category'); 
+            const category = button.getAttribute('data-category');
             populateTable(category);
         });
     });
+
+    const defaultTable = () => {
+        const categories = Object.keys(dictionary.categories)
+        categories.forEach((categorie => {
+            populateTable(categorie, false)
+        }))
+    }
+    defaultTable()
 }

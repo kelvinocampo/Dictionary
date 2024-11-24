@@ -1,0 +1,54 @@
+.list {
+    z-index: 1;
+    display: none;
+    justify-content: center;
+}
+
+
+.tableWord {
+    margin: 100px;
+    width: 50dvw;
+    height: 80dvh;
+    border: 1px solid #fff;
+    background-color: var(--main-color);
+    text-align: center;
+    border-radius: 10px;
+    border-collapse: collapse;
+    max-width: 60dvw;
+    word-break: break-all;
+    white-space: wrap;
+
+    td {
+        border-bottom: 1px solid;
+        word-break: break-all;
+        white-space: wrap;
+
+    }
+
+    th {
+        border-bottom: 1px solid;
+        font-size: 2rem;
+        padding: 1px;
+        height: 60px;
+        word-break: break-all;
+        white-space: wrap;
+        /*         border-left: #fff 1px solid;
+ */
+
+    }
+
+    .category {
+        font-size: 2rem;
+        border-spacing: 0px;
+    }
+
+    .filaFinal {
+        width: 400px;
+        border-left: 11px #fff;
+    }
+}
+
+
+.columns {
+    border: 2px solid #fff;
+}

@@ -1,3 +1,5 @@
+import dictionary from "./dictionary.js";
+
 export const createWord = () => {
     const btnShowCreateWord = document.getElementById('createWord');
     const addWordButton = document.getElementById('addWordButton');
@@ -24,7 +26,7 @@ export const createWord = () => {
         const wordEnglish = document.getElementById('wordEnglish').value.trim();
         const wordSpanish = document.getElementById('wordSpanish').value.trim();
         const example = document.getElementById('example').value.trim();
-        const category = categorySelect.value;
+        const category = document.getElementById('categorySelect').value;
 
         if (wordEnglish && wordSpanish && example) {
             const row = document.createElement('tr');
@@ -33,7 +35,16 @@ export const createWord = () => {
                 <td>${wordSpanish}</td>
                 <td>${example}</td>
             `;
+            console.log(dictionary.categories[category]);
+            
+            const word = {
+                "id": dictionary.categories[category].length,
+                "english": wordEnglish,
+                "spanish": wordSpanish,
+                "example": example
+            }
             tableBody.appendChild(row);
+            dictionary.categories[category].push(word)
 
             clearInputs();
 

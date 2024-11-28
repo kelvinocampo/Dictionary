@@ -29,34 +29,31 @@
     }
 
 
-}
+    .controls {
+        margin-bottom: 10px;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
 
-.controls {
-    margin-bottom: 10px;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-}
+    button {
+        font-size: 16px;
+        padding: 12px 24px;
+        border-radius: 8px;
+        background: var(--main-color);
+        border: none;
+        box-shadow: 1px 1px 5px #0000007c;
+        cursor: pointer;
+        transition: all ease 0.3s;
 
+        &:hover {
+            color: white;
+            background-color: #725AC1;
+            box-shadow: none;
+        }
 
-button {
-    font-size: 16px;
-    padding: 12px 24px;
-    border-radius: 8px;
-    background: var(--main-color);
-    border: none;
-    box-shadow: 1px 1px 5px #0000007c;
-    cursor: pointer;
-    cursor: pointer;
-    transition: ease-out 0.5s;
-
-}
-
-button:hover {
-    color: white;
-    box-shadow: inset 0 -100px 0 0 var(--dark-color);
-}
-
-button:active {
-    transform: scale(0.9);
+        &:active {
+            transform: scale(0.9);
+        }
+    }
 }

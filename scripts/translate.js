@@ -5,18 +5,18 @@ export const translate = () => {
     const $outputWord = document.getElementById('wordTranslate');
     const $outputExample = document.getElementById('exampleTranslate');
 
-    function showOutput(output, example) {
+    const showOutput = (output, example) => {
         $outputWord.textContent = output || 'Traduccion no encontrada';
         $outputExample.textContent = example || 'Traduccion no encontrada';
     }
 
-    function searchWord(word, mode) {
+    const searchWord = (word, mode) => {
         const categories = Object.keys(dictionary.categories);
         let wordTranslate = 'Traduccion no encontrada';
         let example = 'Traduccion no encontrada';
         categories.forEach(category => {
             dictionary.categories[category].forEach(item => {
-                if (item[mode].toLowerCase() === word) {
+                if (item[mode].toLowerCase() === word.toLowerCase()) {
                     let resultMode = (mode === "english") ? "spanish" : "english";
                     example = item["example"];
                     wordTranslate = item[resultMode];
@@ -26,7 +26,7 @@ export const translate = () => {
         return [wordTranslate, example];
     }
 
-    function translate(e) {
+    const translate = (e) => {
         e.preventDefault();
 
         const $word = document.getElementById('word');
@@ -34,7 +34,7 @@ export const translate = () => {
 
         const [output, example] = searchWord(($word.value).toLowerCase(), $mode.value);
         console.log(example);
-        
+
         showOutput(output, example);
     }
 

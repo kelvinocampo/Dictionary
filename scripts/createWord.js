@@ -29,22 +29,46 @@ export const createWord = () => {
         const category = document.getElementById('categorySelect').value;
 
         if (wordEnglish && wordSpanish && example) {
+
+            const repeatItem = () => {
+                const categories = Object.keys(dictionary.categories);
+                let repeat = false;
+                categories.forEach(category => {
+                    dictionary.categories[category].forEach(item => {
+                        if (item["english"].toLowerCase() === wordEnglish.toLowerCase()) repeat = true;
+                        if (item["spanish"].toLowerCase() === wordSpanish.toLowerCase()) repeat = true;
+                    });
+                });
+                return repeat;
+            }
+
+            if (repeatItem()) {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Esta palabra ya existe',
+                    icon: 'error',
+                    confirmButtonText: 'Seguir'
+                });
+                return;
+            }
+
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${wordEnglish}</td>
                 <td>${wordSpanish}</td>
                 <td>${example}</td>
             `;
-            console.log(dictionary.categories[category]);
-            
+
+
             const word = {
                 "id": dictionary.categories[category].length,
                 "english": wordEnglish,
                 "spanish": wordSpanish,
                 "example": example
             }
+
             tableBody.appendChild(row);
-            dictionary.categories[category].push(word)
+            dictionary.categories[category].push(word);
 
             clearInputs();
 

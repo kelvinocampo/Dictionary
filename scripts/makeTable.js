@@ -22,13 +22,7 @@ export const maketable = () => {
         const items = dictionary.categories[category];
 
         items.forEach(item => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${item.english}</td>
-                <td>${item.spanish}</td>
-                <td>${item.example}</td>
-            `;
-            tbody.appendChild(row);
+            z
         });
     };
 
@@ -42,7 +36,7 @@ export const maketable = () => {
     });
 
     const defaultTable = () => {
-        const categories = Object.keys(dictionary.categories)
+        const categories = Object.keys(dictionary.categories);
         categories.forEach((categorie => {
             populateTable(categorie, false)
         }))

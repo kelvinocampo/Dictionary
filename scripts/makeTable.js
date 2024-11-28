@@ -22,7 +22,13 @@ export const maketable = () => {
         const items = dictionary.categories[category];
 
         items.forEach(item => {
-            z
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${item.english}</td>
+                <td>${item.spanish}</td>
+                <td>${item.example}</td>
+            `;
+            tbody.appendChild(row);
         });
     };
 

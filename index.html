@@ -56,13 +56,22 @@
             <button id="addWordButton">Agregar</button>
         </section>
         <section class="table">
+            <label for="sortSelect">Ordenar por:</label>
+            <select id="sortSelect" class="sortSelect">
+                <option value="asc">Ordenar A-Z</option>
+                <option value="desc">Ordenar Z-A</option>
+            </select>
             <div class="controls">
+
+
                 <button class="categoryButton" data-category="animals">Animales</button>
                 <button class="categoryButton" data-category="fruits">Frutas</button>
                 <button class="categoryButton" data-category="colors">Colores</button>
                 <button class="categoryButton" data-category="physical_descriptions">Descripciones Físicas</button>
                 <button class="categoryButton" data-category="skills">Habilidades</button>
                 <button class="categoryButton" data-category="verbs">Verbos</button>
+
+
             </div>
 
             <table class="tableWord">
@@ -75,7 +84,6 @@
                     </tr>
                 </thead>
                 <tbody id="tableBody">
-                    <!-- Las palabras se insertarán aquí -->
                 </tbody>
             </table>
         </section>

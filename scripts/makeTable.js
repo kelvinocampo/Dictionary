@@ -6,20 +6,23 @@ export const maketable = () => {
 
     const showHideTable = () => {
         const display = table.style.display;
-        const textContent = btnShow.textContent;
         table.style.display = (display === "block") ? "none" : "block";
-        btnShow.textContent = (textContent === "Ocultar tabla") ? "Mostrar tabla" : "Ocultar tabla";
     }
 
     btnShow.onclick = showHideTable;
 
-    const populateTable = (category, cleanTable = true) => {
+    const populateTable = (category, order) => {
         const table = document.querySelector('.tableWord');
         const tbody = table.querySelector('tbody');
-
-        if (cleanTable) tbody.innerHTML = '';
+        tbody.innerHTML = '';
 
         const items = dictionary.categories[category];
+
+        if (order) {
+            items.sort((a, b) => {
+                return order === 'asc' ? a.english.localeCompare(b.english) : b.english.localeCompare(a.english);
+            });
+        }
 
         items.forEach(item => {
             const row = document.createElement('tr');
@@ -33,19 +36,21 @@ export const maketable = () => {
     };
 
     const categoryButtons = document.querySelectorAll('.categoryButton');
+    const sortSelect = document.getElementById('sortSelect');
+
+    let selectedCategory = categoryButtons[0].getAttribute('data-category');
 
     categoryButtons.forEach(button => {
         button.onclick = () => {
-            const category = button.getAttribute('data-category');
-            populateTable(category);
+            selectedCategory = button.getAttribute('data-category');
+            const order = sortSelect.value;
+            populateTable(selectedCategory, order);
         };
     });
-
-    const defaultTable = () => {
-        const categories = Object.keys(dictionary.categories);
-        categories.forEach((categorie => {
-            populateTable(categorie, false)
-        }))
-    }
-    defaultTable()
+    
+    sortSelect.onchange = () => {
+        const order = sortSelect.value;
+        populateTable(selectedCategory, order);
+    };
+    populateTable(selectedCategory, sortSelect.value);
 }
